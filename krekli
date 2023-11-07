@@ -1,0 +1,34 @@
+def pasuti_tkreklus(skaits, apdruka, piegade):
+    # Cenas par apdruku
+    apdrukas_cena = 0
+    if apdruka == "TEKSTS":
+        apdrukas_cena = 5
+    elif apdruka == "ZIME":
+        apdrukas_cena = 7
+    elif apdruka == "FOTO":
+        apdrukas_cena = 20
+
+    # Aprēķinam kopējo cenu par krekliem
+    kreklu_cena = skaits * apdrukas_cena
+
+    # Aprēķinam piegādes cenu
+    piegades_cena = 0
+    if piegade and kreklu_cena < 50:
+        piegades_cena = 15
+
+    # Kopējā pasūtījuma cena
+    kopetja_cena = kreklu_cena + piegades_cena
+
+    # Atlaide, ja pasūtījums pārsniedz 100 EUR
+    if kopetja_cena > 100:
+        atlaide = kopetja_cena * 0.05
+        kopetja_cena -= atlaide
+
+    return kopetja_cena
+
+# Piemēri, kā izmantot funkciju
+pasutijums1 = pasuti_tkreklus(10, "TEKSTS", True)
+print("Pasūtījuma cena 1:", pasutijums1, "EUR")
+
+pasutijums2 = pasuti_tkreklus(5, "FOTO", False)
+print("Pasūtījuma cena 2:", pasutijums2, "EUR")
